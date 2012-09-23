@@ -1,6 +1,9 @@
 import subprocess
 
-PANDOC_PATH = '/Users/kreitz/.cabal/bin//pandoc'
+try:
+    PANDOC_PATH = subprocess.check_output(['which','pandoc']).strip()
+except:
+    raise Exception("Could not automatically determine pandoc path, please make sure it is installed.")
 
 
 class Document(object):
